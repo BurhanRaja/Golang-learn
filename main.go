@@ -20,9 +20,8 @@ func main() {
 	// var bookings = []string{}
 	// bookings := []string{}
 
-	fmt.Printf("Hello World to Our %v booking Application.\n", conferenceName)
-	fmt.Printf("We have a total of %v Tickets and %v are still available.\n", conferenceTickets, remainingTickets)
-	fmt.Println("Get your ticket from here to attend.")
+	// Greetings to User
+	greetUser(conferenceName, conferenceTickets, remainingTickets)
 
 	// Infinite For Loop
 	for {
@@ -40,7 +39,12 @@ func main() {
 		fmt.Print("Enter the no of tickets required: \n")
 		fmt.Scan(&userTicket) // passing a pointer instead of a userName variable
 
-		if userTicket <= remainingTickets {
+		// ? Validation
+		isValidName := len(firstName) >= 2 && len(lastName) >= 2
+		isValidEmail := strings.Contains(userEmail, "@.")
+		isValidTicket := userTicket <= remainingTickets && userTicket > 0
+
+		if isValidName && isValidEmail && isValidTicket {
 			remainingTickets -= userTicket
 
 			// ? Array Based
@@ -60,14 +64,8 @@ func main() {
 			fmt.Printf("Thank you %v %v for booking %v tickets. You will recieve a confirmation email at %v  \n", firstName, lastName, userTicket, userEmail)
 			fmt.Printf("%v tickets are remaining for %v", remainingTickets, conferenceName)
 
-			// ? For Loop
-			firstNames := []string{}
-			for _, booking := range bookings {
-				var names = strings.Fields(booking)
-				firstNames = append(firstNames, names[0])
-			}
-
-			fmt.Printf("The first names o the bookings are: %v\n", firstNames)
+			// Get First Names
+			getFirstNames(bookings)
 
 			// ? If/Else
 			if remainingTickets == 0 {
@@ -75,7 +73,44 @@ func main() {
 				break
 			}
 		} else {
-			fmt.Printf("%v tickets are remaining, so you can't book %v tickets \n", remainingTickets, userTicket)
+
+			if !isValidName {
+				fmt.Printf("Please FirstName and LastName should contain at most 2 chars.")
+			}
+			if !isValidEmail {
+				fmt.Printf("Please Enter valid email.")
+			}
+			if !isValidTicket {
+				fmt.Printf("Please Enter correct ticket number.")
+			}
 		}
 	}
+
+	// ? Switch
+	// city := "London"
+	// switch city {
+	// case "London":
+	// Logic
+	// case "New York":
+	// Logic
+	// case "Singapore":
+	// Login
+	// }
+}
+
+func greetUser(confName string, confTickets uint, remainTickets uint) {
+	fmt.Printf("Hello World to Our %v booking Application.\n", confName)
+	fmt.Printf("We have a total of %v Tickets and %v are still available.\n", confTickets, remainTickets)
+	fmt.Println("Get your ticket from here to attend.")
+}
+
+func getFirstNames(bookings []string) {
+	// ? For Loop
+	firstNames := []string{}
+	for _, booking := range bookings {
+		var names = strings.Fields(booking)
+		firstNames = append(firstNames, names[0])
+	}
+
+	fmt.Printf("The first names o the bookings are: %v\n", firstNames)
 }
