@@ -1,0 +1,18 @@
+Build projects
+
+HRM Management System GoFiber
+serverless stack
+A.I Bot with wolfram
+Database
+LoadBalancer
+Cache system
+Site Crawler
+video calling
+CAS Storage
+Message Queue
+
+Conecpt
+
+Concurrency - Goroutines
+Authentication JWT (Also Project)
+CSRF Token for API security (Also Project)
