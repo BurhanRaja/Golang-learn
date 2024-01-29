@@ -1,15 +1,14 @@
 Build projects
 
-HRM Management System GoFiber
-serverless stack
-A.I Bot with wolfram
-Database
+Database - Done
 LoadBalancer
 Cache system
 Site Crawler
+
 video calling
-CAS Storage
+
 Message Queue
+CAS Storage
 
 Conecpt
 
